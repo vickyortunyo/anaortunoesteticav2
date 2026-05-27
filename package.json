@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "postbuild": "cp dist/beauty-app/browser/index.html dist/beauty-app/browser/404.html",
+    "deploy:rules": "firebase deploy --only firestore:rules",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

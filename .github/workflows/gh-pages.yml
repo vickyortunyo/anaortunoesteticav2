@@ -34,6 +34,7 @@ jobs:
 
       - name: Build Angular Project
         run: npm run build
+        # postbuild copia index.html → 404.html para rutas SPA (/login, /admin)
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
