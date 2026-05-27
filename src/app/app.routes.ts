@@ -8,6 +8,9 @@ import { AvisoLegal } from './public/legal/aviso-legal/aviso-legal';
 import { Privacidad } from './public/legal/privacidad/privacidad';
 import { Cookies } from './public/legal/cookies/cookies';
 import { NotFound } from './public/not-found/not-found';
+import { Login } from './admin/login/login';
+import { Dashboard } from './admin/dashboard/dashboard';
+import { adminGuard } from './core/guards/admin.guard';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -18,5 +21,7 @@ export const routes: Routes = [
   { path: 'aviso-legal', component: AvisoLegal },
   { path: 'privacidad', component: Privacidad },
   { path: 'cookies', component: Cookies },
+  { path: 'login', component: Login },
+  { path: 'admin', component: Dashboard, canActivate: [adminGuard] },
   { path: '**', component: NotFound }
 ];

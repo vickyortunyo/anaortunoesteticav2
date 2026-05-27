@@ -1,0 +1,67 @@
+<div class="min-h-screen bg-cream">
+  <nav class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <h1 class="text-xl font-heading font-bold text-gold-primary">Panel de Administración</h1>
+        </div>
+        <div class="flex items-center">
+          <button (click)="logout()" class="text-text-body hover:text-gold-primary font-medium">
+            Cerrar Sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate">
+        Precios de Tratamientos
+      </h2>
+      <p class="mt-2 text-sm text-gray-500">
+        Modifica el precio y haz clic en "Guardar" para aplicar los cambios en la web.
+      </p>
+    </div>
+
+    <div class="bg-white shadow overflow-hidden sm:rounded-md">
+      <ul role="list" class="divide-y divide-gray-200">
+        @for (category of categories; track category.id) {
+          <li class="bg-gray-50 px-4 py-3 border-t border-b border-gray-200">
+            <h3 class="text-lg font-medium text-gray-900">{{ category.label }}</h3>
+          </li>
+          @for (treatment of getTreatmentsByCategory(category.id); track treatment.slug) {
+            <li class="px-4 py-4 sm:px-6 flex items-center justify-between">
+              <div class="flex-1 min-w-0 pr-4">
+                <p class="text-sm font-medium text-gold-primary truncate">{{ treatment.name }}</p>
+                <p class="text-sm text-gray-500 truncate">{{ treatment.shortDescription }}</p>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="flex items-center gap-1">
+                  <input type="text"
+                    [ngModel]="getPriceInput(treatment.price)"
+                    (ngModelChange)="onPriceInput(treatment, $event)"
+                    class="shadow-sm focus:ring-gold-primary focus:border-gold-primary block w-20 sm:text-sm border-gray-300 rounded-md"
+                    style="padding: 8px;"
+                    placeholder="Ej: 35">
+                  <span class="text-sm text-gray-600 shrink-0">€</span>
+                </div>
+                <button (click)="savePrice(treatment)" 
+                  [disabled]="saving[treatment.slug]"
+                  class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-gold-primary hover:bg-gold-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gold-primary w-24 justify-center">
+                  @if (saving[treatment.slug]) {
+                    Guardando...
+                  } @else if (saved[treatment.slug]) {
+                    ¡Guardado!
+                  } @else {
+                    Guardar
+                  }
+                </button>
+              </div>
+            </li>
+          }
+        }
+      </ul>
+    </div>
+  </div>
+</div>
