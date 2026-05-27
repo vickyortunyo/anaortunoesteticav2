@@ -1,0 +1,172 @@
+<!-- Hero -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0">
+    <img
+      src="assets/images/hero/hero-original.jpg"
+      alt="Tratamiento facial profesional en Ana Ortuño Estética"
+      class="w-full h-full object-cover"
+    >
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+  </div>
+  <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+      Descubre tu mejor versión
+    </h1>
+    <p class="text-lg sm:text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+      Centro de estética en Alicante y El Campello. Tratamientos personalizados para tu bienestar y belleza.
+    </p>
+    <!-- <a
+      routerLink="/cita"
+      class="inline-block bg-gold-primary hover:bg-gold-dark text-white px-10 py-4 rounded-full text-lg font-semibold transition-colors shadow-lg hover:shadow-xl"
+    >
+      Pedir Cita
+    </a> -->
+    <a
+        href="https://wa.me/34636942954?text=Hola,%20me%20gustaría%20pedir%20una%20cita"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-full text-lg font-semibold transition-colors"
+      >
+        <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+        WhatsApp
+      </a>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16" appScrollAnimate>
+      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gold-primary mb-4">Nuestros Servicios</h2>
+      <p class="text-text-body max-w-2xl mx-auto">
+        Ofrecemos una amplia gama de tratamientos de belleza para cuidarte de la cabeza a los pies.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      @for (category of categories; track category.id) {
+        <a
+          routerLink="/tratamientos"
+          class="bg-white rounded-2xl p-8 text-center shadow-[0_4px_20px_rgba(196,150,122,0.15)] hover:shadow-[0_8px_30px_rgba(196,150,122,0.25)] hover:-translate-y-2 transition-all duration-300 group"
+          appScrollAnimate
+        >
+          <div class="w-20 h-20 bg-cream rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-yellow-light transition-colors">
+            <i [class]="category.icon + ' text-4xl text-gold-primary'"></i>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-gold-primary mb-3 group-hover:text-gold-dark transition-colors">
+            {{ category.label }}
+          </h3>
+          <p class="text-text-body text-sm">{{ category.description }}</p>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Sobre mí -->
+<section class="py-20 bg-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div appScrollAnimate>
+        <img
+          src="assets/images/hero/hero-alt.jpg"
+          alt="Ana Ortuño, esteticista profesional"
+          class="rounded-2xl shadow-lg w-full object-cover max-h-[500px]"
+        >
+      </div>
+      <div appScrollAnimate>
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gold-primary mb-6">Sobre mí</h2>
+        <p class="text-text-body mb-4 leading-relaxed">
+          Soy Ana Ortuño, esteticista profesional en Alicante y El Campello. Mi pasión es ayudar a cada persona
+          a sentirse bien consigo misma a través de tratamientos personalizados y de calidad.
+        </p>
+        <p class="text-text-body mb-6 leading-relaxed">
+          En mi centro encontrarás un espacio acogedor donde relajarte y cuidar de tu bienestar.
+          Utilizo productos de primera calidad y técnicas actualizadas para ofrecerte los mejores resultados.
+        </p>
+        <a
+          routerLink="/contacto"
+          class="inline-block bg-gold-primary hover:bg-gold-dark text-white px-8 py-3 rounded-full font-semibold transition-colors"
+        >
+          Conóceme
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16" appScrollAnimate>
+      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gold-primary mb-4">Lo que dicen nuestras clientas</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      @for (testimonial of testimonials; track testimonial.name) {
+        <div
+          class="bg-cream rounded-2xl p-8 shadow-[0_4px_20px_rgba(196,150,122,0.1)]"
+          appScrollAnimate
+        >
+          <div class="flex gap-1 mb-4">
+            @for (star of [1, 2, 3, 4, 5]; track star) {
+              <i class="ph-fill ph-star text-gold-primary"></i>
+            }
+          </div>
+          <p class="text-text-body mb-4 italic">"{{ testimonial.text }}"</p>
+          <div>
+            <p class="font-semibold text-gold-primary">{{ testimonial.name }}</p>
+            <p class="text-sm text-text-body">{{ testimonial.treatment }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Instagram CTA -->
+<section class="py-16 bg-cream" appScrollAnimate>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <i class="ph ph-instagram-logo text-5xl text-gold-primary mb-4"></i>
+    <h2 class="font-heading text-3xl font-bold text-gold-primary mb-4">Síguenos en Instagram</h2>
+    <p class="text-text-body mb-6 max-w-lg mx-auto">
+      Descubre nuestros últimos trabajos, promociones y consejos de belleza.
+    </p>
+    <a
+      href="https://www.instagram.com/anaortuno.estetica/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 bg-gold-primary hover:bg-gold-dark text-white px-8 py-3 rounded-full font-semibold transition-colors"
+    >
+      <i class="ph ph-instagram-logo text-xl"></i>
+      &#64;anaortuno.estetica
+    </a>
+  </div>
+</section>
+
+<!-- CTA Strip -->
+<section class="py-16 bg-gold-primary">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="font-heading text-3xl font-bold text-white mb-6">¿Lista para tu próxima cita?</h2>
+    <p class="text-white/90 mb-8 max-w-lg mx-auto">
+      Reserva tu cita online o contacta con nosotros por WhatsApp.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <!-- <a
+        routerLink="/cita"
+        class="inline-block bg-white text-gold-primary hover:bg-cream px-10 py-4 rounded-full text-lg font-semibold transition-colors"
+      >
+        Reservar Cita
+      </a> -->
+      <a
+        href="https://wa.me/34636942954?text=Hola,%20me%20gustaría%20pedir%20una%20cita"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-full text-lg font-semibold transition-colors"
+      >
+        <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>

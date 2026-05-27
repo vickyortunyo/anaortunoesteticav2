@@ -1,0 +1,71 @@
+<section class="pt-28 pb-16 bg-cream min-h-screen">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    @if (treatment(); as t) {
+      <div appScrollAnimate>
+        <!-- Breadcrumb -->
+        <nav class="mb-8 text-sm">
+          <a routerLink="/tratamientos" class="text-gold-primary hover:text-gold-dark transition-colors">
+            Tratamientos
+          </a>
+          <span class="mx-2 text-text-body">/</span>
+          <span class="text-text-body">{{ t.name }}</span>
+        </nav>
+
+        <!-- Treatment card -->
+        <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgba(196,150,122,0.15)] p-8">
+          <div class="flex items-center gap-2 mb-4">
+            <i [class]="t.categoryIcon + ' text-gold-primary text-xl'"></i>
+            <span class="text-sm font-semibold text-gold-primary uppercase tracking-wide">{{ t.categoryLabel }}</span>
+          </div>
+
+          <h1 class="font-heading text-3xl font-bold text-gold-primary mb-4">{{ t.name }}</h1>
+          <p class="text-text-body text-lg mb-6">{{ t.shortDescription }}</p>
+
+          @if (t.fullDescription) {
+            <div class="prose prose-sm max-w-none text-text-body mb-6" [innerHTML]="t.fullDescription"></div>
+          }
+
+          <!-- Price & Duration -->
+          <div class="flex flex-wrap items-center gap-6 mb-8 pb-8 border-b border-yellow-light">
+            <div class="flex items-center gap-2">
+              <span class="text-3xl font-bold text-gold-primary">{{ t.price }}</span>
+            </div>
+            @if (t.duration) {
+              <div class="flex items-center gap-2 text-text-body">
+                <i class="ph ph-clock text-xl text-gold-primary"></i>
+                <span>{{ t.duration }}</span>
+              </div>
+            }
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <!-- <a
+              routerLink="/cita"
+              class="inline-flex items-center justify-center gap-2 bg-gold-primary hover:bg-gold-dark text-white px-8 py-3 rounded-full font-semibold transition-colors"
+            >
+              <i class="ph ph-calendar text-xl"></i>
+              Reservar cita
+            </a> -->
+            <a
+              [href]="getWhatsAppUrl()"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-semibold transition-colors"
+            >
+              <i class="ph-fill ph-whatsapp-logo text-xl"></i>
+              Consultar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    } @else {
+      <div class="text-center pt-20">
+        <h1 class="font-heading text-2xl font-bold text-gold-primary mb-4">Tratamiento no encontrado</h1>
+        <a routerLink="/tratamientos" class="text-gold-primary hover:text-gold-dark underline">
+          Ver todos los tratamientos
+        </a>
+      </div>
+    }
+  </div>
+</section>

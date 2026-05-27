@@ -1,0 +1,49 @@
+<section class="pt-28 pb-16 bg-cream min-h-screen">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" appScrollAnimate>
+      <h1 class="font-heading text-4xl font-bold text-gold-primary mb-4">Reserva tu Cita</h1>
+      <p class="text-text-body max-w-2xl mx-auto">
+        Elige la fecha y hora que mejor te convenga. Si prefieres, también puedes contactarnos por WhatsApp.
+      </p>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgba(196,150,122,0.15)] p-4 sm:p-8" appScrollAnimate #iframeContainer>
+      @if (iframeLoaded()) {
+        <iframe
+          [src]="calendarUrl"
+          class="w-full rounded-xl border-0"
+          style="min-height: 600px;"
+          title="Calendario de citas de Ana Ortuño Estética"
+          sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+          loading="lazy"
+        ></iframe>
+      }
+      <p class="text-center text-sm text-text-body mt-4">
+        Si no se carga el calendario,
+        <a
+          [href]="rawCalendarUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gold-primary hover:text-gold-dark underline"
+        >
+          haz clic aquí
+        </a>
+        para abrirlo en una nueva pestaña.
+      </p>
+    </div>
+
+    <!-- Alternative contact -->
+    <div class="text-center mt-12" appScrollAnimate>
+      <p class="text-text-body mb-4">¿Prefieres contactar directamente?</p>
+      <a
+        href="https://wa.me/34636942954?text=Hola,%20me%20gustaría%20pedir%20una%20cita"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-semibold transition-colors"
+      >
+        <i class="ph-fill ph-whatsapp-logo text-xl"></i>
+        Contactar por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>

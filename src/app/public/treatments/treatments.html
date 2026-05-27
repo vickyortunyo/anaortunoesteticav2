@@ -1,0 +1,26 @@
+<section class="pt-28 pb-16 bg-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" appScrollAnimate>
+      <h1 class="font-heading text-4xl font-bold text-gold-primary mb-4">Nuestros Tratamientos</h1>
+      <p class="text-text-body max-w-2xl mx-auto">
+        Descubre nuestra amplia gama de tratamientos de belleza y bienestar. Cada servicio está diseñado para realzar tu belleza natural.
+      </p>
+    </div>
+
+    @for (category of categories; track category.id) {
+      <div class="mb-16" appScrollAnimate>
+        <div class="flex items-center gap-3 mb-6">
+          <i [class]="category.icon + ' text-3xl text-gold-primary'"></i>
+          <h2 class="font-heading text-2xl font-semibold text-gold-primary">{{ category.label }}</h2>
+        </div>
+        <p class="text-text-body mb-8">{{ category.description }}</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          @for (treatment of getTreatmentsByCategory(category.id); track treatment.slug) {
+            <app-treatment-card [treatment]="treatment" />
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>

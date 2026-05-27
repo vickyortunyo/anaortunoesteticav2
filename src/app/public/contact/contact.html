@@ -1,0 +1,124 @@
+<section class="pt-28 pb-16 bg-cream min-h-screen">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" appScrollAnimate>
+      <h1 class="font-heading text-4xl font-bold text-gold-primary mb-4">Contacto</h1>
+      <p class="text-text-body max-w-2xl mx-auto">
+        ¿Tienes alguna pregunta? No dudes en contactarnos. Estaremos encantados de atenderte.
+      </p>
+    </div>
+
+    <!-- Contact Info (full width) -->
+    <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgba(196,150,122,0.15)] p-8 mb-8" appScrollAnimate>
+      <h3 class="font-heading text-xl font-semibold text-gold-primary mb-6">Información de contacto</h3>
+
+      <div class="flex flex-wrap gap-x-8 gap-y-4 mb-6">
+        <a
+          href="https://wa.me/34636942954?text=Hola,%20me%20gustaría%20pedir%20una%20cita"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-3 hover:text-gold-primary transition-colors"
+        >
+          <i class="ph-fill ph-whatsapp-logo text-gold-primary text-xl"></i>
+          <span>+34 636 94 29 54</span>
+        </a>
+        <a
+          href="mailto:anaortuno.estetica@gmail.com"
+          class="flex items-center gap-3 hover:text-gold-primary transition-colors"
+        >
+          <i class="ph ph-envelope text-gold-primary text-xl"></i>
+          <span>anaortuno.estetica&#64;gmail.com</span>
+        </a>
+      </div>
+
+      <!-- Locations with timetables -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="flex items-start gap-3">
+          <i class="ph ph-map-pin text-gold-primary text-xl mt-1 shrink-0"></i>
+          <div class="flex-1 min-w-0">
+            <span class="font-semibold">C/ Isabel La Católica, 20 — GROW Peluqueros y Estilistas<br>03007 Alicante (Benalúa)</span>
+            <dl class="mt-2 text-sm grid grid-cols-[1fr_auto] gap-x-4 gap-y-0.5">
+              <dt [class]="isDayActive(2) ? 'text-gold-primary font-semibold' : 'text-text-body/70'">
+                Martes
+                @if (isDayActive(2)) { <span class="text-xs bg-gold-primary/10 text-gold-primary rounded-full px-2 py-0.5 ml-1">Hoy</span> }
+              </dt>
+              <dd [class]="isDayActive(2) ? 'text-right text-gold-primary font-semibold' : 'text-right'">9:30 – 19:30</dd>
+              <dt [class]="isDayActive(3) ? 'text-gold-primary font-semibold' : 'text-text-body/70'">
+                Miércoles
+                @if (isDayActive(3)) { <span class="text-xs bg-gold-primary/10 text-gold-primary rounded-full px-2 py-0.5 ml-1">Hoy</span> }
+              </dt>
+              <dd [class]="isDayActive(3) ? 'text-right text-gold-primary font-semibold' : 'text-right'">9:30 – 14:00</dd>
+              <dt [class]="isDayActive(4) ? 'text-gold-primary font-semibold' : 'text-text-body/70'">
+                Jueves
+                @if (isDayActive(4)) { <span class="text-xs bg-gold-primary/10 text-gold-primary rounded-full px-2 py-0.5 ml-1">Hoy</span> }
+              </dt>
+              <dd [class]="isDayActive(4) ? 'text-right text-gold-primary font-semibold' : 'text-right'">9:30 – 19:30</dd>
+              <dt [class]="isDayActive(5) ? 'text-gold-primary font-semibold' : 'text-text-body/70'">
+                Viernes
+                @if (isDayActive(5)) { <span class="text-xs bg-gold-primary/10 text-gold-primary rounded-full px-2 py-0.5 ml-1">Hoy</span> }
+              </dt>
+              <dd [class]="isDayActive(5) ? 'text-right text-gold-primary font-semibold' : 'text-right'">9:30 – 19:30</dd>
+              <dt [class]="isDayActive(6) ? 'text-gold-primary font-semibold' : 'text-text-body/70'">
+                Sábado
+                @if (isDayActive(6)) { <span class="text-xs bg-gold-primary/10 text-gold-primary rounded-full px-2 py-0.5 ml-1">Hoy</span> }
+              </dt>
+              <dd [class]="isDayActive(6) ? 'text-right text-gold-primary font-semibold' : 'text-right'">9:30 – 14:00</dd>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <i class="ph ph-map-pin text-gold-primary text-xl mt-1 shrink-0"></i>
+          <div class="flex-1 min-w-0">
+            <span class="font-semibold">Avda. Ausiàs March, 30<br>03560 El Campello</span>
+            <dl class="mt-2 text-sm grid grid-cols-[1fr_auto] gap-x-4 gap-y-0.5">
+              <dt [class]="isDayActive(1) ? 'text-gold-primary font-semibold' : 'text-text-body/70'">
+                Lunes
+                @if (isDayActive(1)) { <span class="text-xs bg-gold-primary/10 text-gold-primary rounded-full px-2 py-0.5 ml-1">Hoy</span> }
+              </dt>
+              <dd [class]="isDayActive(1) ? 'text-right text-gold-primary font-semibold' : 'text-right'">9:30 – 14:00</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Google Maps (side by side) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" appScrollAnimate #mapContainer>
+      <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgba(196,150,122,0.15)] p-4 overflow-hidden">
+        <p class="text-sm font-semibold text-gold-primary mb-2">Alicante (Benalúa)</p>
+        @if (mapLoaded()) {
+          <iframe
+            [src]="mapUrl"
+            class="w-full rounded-xl border-0"
+            style="min-height: 300px;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación de Ana Ortuño Estética en Alicante"
+          ></iframe>
+        } @else {
+          <div class="w-full rounded-xl bg-cream flex items-center justify-center" style="min-height: 300px;">
+            <p class="text-text-body">Cargando mapa...</p>
+          </div>
+        }
+      </div>
+      <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgba(196,150,122,0.15)] p-4 overflow-hidden">
+        <p class="text-sm font-semibold text-gold-primary mb-2">El Campello</p>
+        @if (mapLoaded()) {
+          <iframe
+            [src]="mapCampelloUrl"
+            class="w-full rounded-xl border-0"
+            style="min-height: 300px;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación de Ana Ortuño Estética en El Campello"
+          ></iframe>
+        } @else {
+          <div class="w-full rounded-xl bg-cream flex items-center justify-center" style="min-height: 300px;">
+            <p class="text-text-body">Cargando mapa...</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
